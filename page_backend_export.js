@@ -273,12 +273,17 @@
 
   function extractImageGroupsFromContent(content) {
     const groups = [];
-    const pattern = /image_group([\s\S]*?)/g;
+    const pattern = /(image_group|i)([\s\S]*?)/g;
     let match;
     while ((match = pattern.exec(String(content || ""))) !== null) {
-      const group = parseImageGroupPayload(match[1]);
+      const kind = match[1];
+      const payload = match[2];
+      const group = kind === "image_group"
+        ? parseImageGroupPayload(payload)
+        : { queries: [], aspect_ratio: null, raw: payload, images: [], kind: "image_v2" };
       if (group) {
         group.token = match[0];
+        group.kind = group.kind || kind;
         groups.push(group);
       }
     }
@@ -322,11 +327,42 @@
       .filter(Boolean);
   }
 
+  function normalizeImageReferenceImage(image = {}) {
+    if (!image || typeof image !== "object") return null;
+    const preview = image.thumbnail_url || image.content_url || image.image_url || image.original_content_url || image.url || null;
+    const full = image.content_url || image.original_content_url || image.thumbnail_url || image.url || null;
+    const sourceUrl = image.url && isHttpUrl(image.url) ? image.url : (image.original_content_url && isHttpUrl(image.original_content_url) ? image.original_content_url : null);
+    if (!preview && !full && !sourceUrl) return null;
+    return {
+      url: full || preview || sourceUrl,
+      preview_url: preview || full || sourceUrl,
+      thumbnail_url: image.thumbnail_url || null,
+      content_url: image.content_url || null,
+      title: image.title || image.alt || image.caption || image.attribution || null,
+      source_url: sourceUrl,
+      attribution: image.attribution || null,
+      width: image.content_size?.width || image.thumbnail_size?.width || image.width || null,
+      height: image.content_size?.height || image.thumbnail_size?.height || image.height || null
+    };
+  }
+
+  function imageQueriesFromReference(ref = {}) {
+    const text = String(ref.prompt_text || ref.alt || "");
+    const titles = Array.isArray(ref.images) ? ref.images.map(image => image?.title).filter(Boolean) : [];
+    const promptTitles = [];
+    text.replace(/!\[([^\]]+)\]\(/g, (_m, title) => {
+      if (title) promptTitles.push(title);
+      return "";
+    });
+    return [...promptTitles, ...titles].map(item => String(item || "").trim()).filter(Boolean);
+  }
+
   function extractReadableReferences(metadata = {}) {
     const contentReferences = Array.isArray(metadata.content_references) ? metadata.content_references : [];
     const sourceReferences = [];
     const entityReferences = [];
     const fileReferences = [];
+    const imageReferences = [];
 
     for (const ref of contentReferences) {
       if (!ref || typeof ref !== "object") continue;
@@ -384,10 +420,22 @@
           review_count: entityData.review_count || null,
           phone: entityData.phone || null
         });
+      } else if (ref.type === "image_v2" || ref.type === "image" || ref.type === "images") {
+        const images = Array.isArray(ref.images) ? ref.images.map(normalizeImageReferenceImage).filter(Boolean) : [];
+        if (ref.matched_text || images.length) {
+          imageReferences.push({
+            token: ref.matched_text || null,
+            queries: imageQueriesFromReference(ref),
+            aspect_ratio: null,
+            raw: { type: ref.type, refs: ref.refs || [], alt: ref.alt || null },
+            kind: ref.type || "image_v2",
+            images
+          });
+        }
       }
     }
 
-    return { sourceReferences, entityReferences, fileReferences };
+    return { sourceReferences, entityReferences, fileReferences, imageReferences };
   }
 
   function isHttpUrl(value) {
@@ -680,6 +728,33 @@
     return { internal: false, reason: null };
   }
 
+  function mergeImageReferenceGroups(contentGroups, referenceGroups) {
+    const groups = Array.isArray(contentGroups) ? contentGroups.map(group => ({ ...group })) : [];
+    const refs = Array.isArray(referenceGroups) ? referenceGroups : [];
+    const used = new Set();
+
+    for (const group of groups) {
+      if (!group?.token) continue;
+      const matchIndex = refs.findIndex((ref, index) => !used.has(index) && ref?.token === group.token);
+      if (matchIndex >= 0) {
+        const ref = refs[matchIndex];
+        used.add(matchIndex);
+        group.queries = Array.isArray(group.queries) && group.queries.length ? group.queries : (ref.queries || []);
+        group.images = Array.isArray(group.images) && group.images.length ? group.images : (ref.images || []);
+        group.raw = group.raw || ref.raw || null;
+        group.kind = group.kind || ref.kind || null;
+      }
+    }
+
+    for (let index = 0; index < refs.length; index += 1) {
+      if (used.has(index)) continue;
+      const ref = refs[index];
+      if (ref && (ref.token || (Array.isArray(ref.images) && ref.images.length))) groups.push({ ...ref });
+    }
+
+    return groups;
+  }
+
   function makeMessage(item, exportedAt, index, includeMetadata) {
     const msg = item.message;
     const role = msg?.author?.role;
@@ -687,8 +762,8 @@
     const createdAt = msg.create_time ? formatDate(new Date(msg.create_time * 1000)) : null;
     const updatedAt = msg.update_time ? formatDate(new Date(msg.update_time * 1000)) : null;
     const attachments = extractAttachments(msg);
-    const imageGroups = extractImageGroupsFromContent(content);
     const readableRefs = extractReadableReferences(msg.metadata || {});
+    const imageGroups = mergeImageReferenceGroups(extractImageGroupsFromContent(content), readableRefs.imageReferences || []);
 
     const finalMessage = {
       index,
@@ -1239,7 +1314,7 @@
 
   function renderMarkdownWithImageGroups(text, baseId, state) {
     const source = String(text || "");
-    const pattern = /image_group([\s\S]*?)/g;
+    const pattern = /(image_group|i)([\s\S]*?)/g;
     let lastIndex = 0;
     let match;
     const out = [];
@@ -1248,7 +1323,10 @@
       const before = source.slice(lastIndex, match.index);
       if (before.trim()) out.push(renderMarkdownSegment(before));
 
-      const fallbackGroup = parseImageGroupPayload(match[1]) || { queries: [], images: [] };
+      const kind = match[1];
+      const fallbackGroup = kind === "image_group"
+        ? (parseImageGroupPayload(match[2]) || { queries: [], images: [] })
+        : { queries: [], images: [], raw: match[2], kind: "image_v2", token: match[0] };
       const group = state.imageGroups[state.imageGroupIndex] || fallbackGroup;
       const groupId = `${safeDomId(baseId)}-image-group-${state.imageGroupIndex + 1}`;
       out.push(renderImageGroup(group, groupId));
@@ -2157,7 +2235,7 @@ ${messages}
   }
 
   function showExportNotice(message, kind = "success") {
-    const id = "chatgpt-conversation-export-v100rc1-notice";
+    const id = "chatgpt-conversation-export-v100rc3-notice";
     const old = document.getElementById(id);
     if (old) old.remove();
     const isDark = detectPageTheme() === "dark";
@@ -2275,7 +2353,7 @@ ${messages}
           assistant: t("chatgptSpeaker")
         },
         export_stats: {
-          version: "1.0.0-rc1",
+          version: "1.0.0-rc3",
           extraction_method: "backend_api_page_context_with_session_token",
           backend_attempt_used: fetched.usedAttempt,
           raw_mapping_nodes: raw.mapping ? Object.keys(raw.mapping).length : null,

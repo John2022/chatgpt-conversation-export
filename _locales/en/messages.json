@@ -24,7 +24,7 @@
     "message": "Settings"
   },
   "statusReady": {
-    "message": "v1.0.0-rc2 — backend API + session token."
+    "message": "v1.0.0-rc3 — backend API + session token."
   },
   "hint": {
     "message": "Readable: for reading or continuing a conversation. Complete archive: includes internal messages and metadata."

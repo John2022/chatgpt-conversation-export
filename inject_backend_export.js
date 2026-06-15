@@ -2,13 +2,13 @@
   const mode = window.__CHATGPT_CONVERSATION_EXPORT_V100RC1_MODE || "export_readable";
   const format = window.__CHATGPT_CONVERSATION_EXPORT_V100RC1_FORMAT || "json";
   const settings = window.__CHATGPT_CONVERSATION_EXPORT_V100RC1_SETTINGS || {};
-  const token = "chatgpt_conversation_export_v100rc1_" + Date.now() + "_" + Math.random().toString(16).slice(2);
+  const token = "chatgpt_conversation_export_v100rc3_" + Date.now() + "_" + Math.random().toString(16).slice(2);
 
-  const existing = document.getElementById("chatgpt-conversation-export-v100rc1-script");
+  const existing = document.getElementById("chatgpt-conversation-export-v100rc3-script");
   if (existing) existing.remove();
 
   const script = document.createElement("script");
-  script.id = "chatgpt-conversation-export-v100rc1-script";
+  script.id = "chatgpt-conversation-export-v100rc3-script";
   script.src = browser.runtime.getURL("page_backend_export.js");
   script.dataset.mode = mode;
   script.dataset.format = format;

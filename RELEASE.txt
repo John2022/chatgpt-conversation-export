@@ -1,4 +1,4 @@
-ChatGPT Conversation Export v1.0.0-rc2
+ChatGPT Conversation Export v1.0.0-rc3
 Author / copyright holder: John2022
 License: Mozilla Public License 2.0
 Technical base: v53

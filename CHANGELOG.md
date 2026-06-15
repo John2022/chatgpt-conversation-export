@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.0-rc3 — Image carousel rendering fix
+
+- Added rendering support for ChatGPT image carousel tokens (`i`) in readable HTML exports.
+- Preserves image galleries from `image_v2` metadata when available.
+
 ## 1.0.0-rc2 — Initial public release candidate
 
 Initial public version of ChatGPT Conversation Export.

@@ -34,7 +34,7 @@ function getStorageValues() {
 
 (function () {
   const api = extensionApi();
-  const ROOT_ID = "chatgpt-conversation-export-v100rc1-root";
+  const ROOT_ID = "chatgpt-conversation-export-v100rc3-root";
 
   function msg(key, settings) {
     return typeof CCB_msg === "function" ? CCB_msg(key, settings || {}) : key;
@@ -131,11 +131,11 @@ function getStorageValues() {
   }
 
   function injectExport(mode, format, settings) {
-    const token = "chatgpt_conversation_export_v100rc1_inline_" + Date.now() + "_" + Math.random().toString(16).slice(2);
-    const old = document.getElementById("chatgpt-conversation-export-v100rc1-script");
+    const token = "chatgpt_conversation_export_v100rc3_inline_" + Date.now() + "_" + Math.random().toString(16).slice(2);
+    const old = document.getElementById("chatgpt-conversation-export-v100rc3-script");
     if (old) old.remove();
     const script = document.createElement("script");
-    script.id = "chatgpt-conversation-export-v100rc1-script";
+    script.id = "chatgpt-conversation-export-v100rc3-script";
     script.src = api.runtime.getURL("page_backend_export.js");
     script.dataset.mode = mode;
     script.dataset.format = format;
