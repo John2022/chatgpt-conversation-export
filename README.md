@@ -14,6 +14,57 @@ The extension creates local JSON or HTML files without sending conversations to 
 - Integrated button inside the ChatGPT page.
 - Settings for language, theme, button position and visible actions.
 
+## Why this extension exists
+
+ChatGPT Conversation Export was created for users who work with long, complex conversations and need a reliable way to preserve or continue them.
+
+Long ChatGPT conversations can eventually become difficult to use: the page may become slow, responses may take much longer, the model may start repeating itself, lose track of earlier decisions, or make more mistakes because the conversation has become too large and overloaded.
+
+The extension helps by exporting the current conversation to readable local files, so the user can:
+
+* keep an offline backup of important conversations;
+* preserve the work already done;
+* review long conversations outside the ChatGPT interface;
+* extract useful context before starting a new conversation;
+* continue a project from a cleaner, shorter prompt;
+* reduce the risk of losing important details when a conversation becomes too long to continue comfortably.
+
+The goal is not only to archive conversations, but also to make long-running work easier to resume, transfer and document.
+
+## Screenshots
+
+### Firefox extension panel
+
+![Firefox extension panel](screenshots/01-extension-toolbar-menu-1.png)
+
+### Extension popup menu
+
+![Extension popup menu](screenshots/02-extension-toolbar-menu-2.png)
+
+### Integrated ChatGPT button
+
+![Integrated ChatGPT button](screenshots/03-integrated-button.png)
+
+### Options page
+
+![Options page](screenshots/04-options-page.png)
+
+### Integrated export confirmation
+
+![Integrated export confirmation](screenshots/05-integrated-export-complete.png)
+
+### Demo conversation in ChatGPT
+
+![Demo conversation in ChatGPT](screenshots/06-chatgpt-demo-conversation.png)
+
+### Readable HTML conversation layout
+
+![Readable HTML conversation layout](screenshots/07-readable-html-conversation-layout.png)
+
+### Full-width readable HTML export
+
+![Full-width readable HTML export](screenshots/08-readable-html-full-width.png)
+
 ## Export modes
 
 ### Readable conversation
