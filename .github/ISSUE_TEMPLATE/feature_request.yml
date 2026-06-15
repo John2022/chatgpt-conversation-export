@@ -3,63 +3,60 @@ description: Suggest an improvement or a new feature for ChatGPT Conversation Ex
 title: "[Feature] "
 labels: ["enhancement"]
 body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for suggesting an improvement.
 
-* type: markdown
-  attributes:
-  value: |
-  Thank you for suggesting an improvement.
+        Please describe the use case clearly. This helps evaluate whether the feature fits the scope of the extension.
 
-  ```
-  Please describe the use case clearly. This helps evaluate whether the feature fits the scope of the extension.
-  ```
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or limitation
+      description: What problem would this feature solve?
+      placeholder: Explain the current limitation.
+    validations:
+      required: true
 
-* type: textarea
-  id: problem
-  attributes:
-  label: Problem or limitation
-  description: What problem would this feature solve?
-  placeholder: Explain the current limitation.
-  validations:
-  required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: Describe the feature or behavior you would like to see.
+      placeholder: Explain the proposed feature.
+    validations:
+      required: true
 
-* type: textarea
-  id: proposal
-  attributes:
-  label: Proposed solution
-  description: Describe the feature or behavior you would like to see.
-  placeholder: Explain the proposed feature.
-  validations:
-  required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Readable HTML export
+        - Complete HTML export
+        - Readable JSON export
+        - Complete JSON export
+        - Integrated ChatGPT button
+        - Options page
+        - Interface / translations
+        - Documentation
+        - Other
+    validations:
+      required: true
 
-* type: dropdown
-  id: area
-  attributes:
-  label: Area
-  options:
-  - Readable HTML export
-  - Complete HTML export
-  - Readable JSON export
-  - Complete JSON export
-  - Integrated ChatGPT button
-  - Options page
-  - Interface / translations
-  - Documentation
-  - Other
-  validations:
-  required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Optional. Describe any workaround or alternative solution.
+    validations:
+      required: false
 
-* type: textarea
-  id: alternatives
-  attributes:
-  label: Alternatives considered
-  description: Optional. Describe any workaround or alternative solution.
-  validations:
-  required: false
-
-* type: textarea
-  id: context
-  attributes:
-  label: Additional context
-  description: Optional. Add screenshots, examples, or links if useful.
-  validations:
-  required: false
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Optional. Add screenshots, examples, or links if useful.
+    validations:
+      required: false
