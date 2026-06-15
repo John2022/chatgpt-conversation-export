@@ -16,6 +16,14 @@ The extension creates local JSON or HTML files without sending conversations to 
 - Integrated button inside the ChatGPT page.
 - Settings for language, theme, button position and visible actions.
 
+## Downloads
+
+The latest release candidate is available from the GitHub Releases page:
+
+[Download the latest release](https://github.com/John2022/chatgpt-conversation-export/releases)
+
+Current release candidate: `v1.0.0-rc3`
+
 ## Why this extension exists
 
 ChatGPT Conversation Export was created for users who work with long, complex conversations and need a reliable way to preserve or continue them.

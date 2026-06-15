@@ -16,6 +16,14 @@ L’extension produit des fichiers locaux, en JSON ou en HTML, sans envoyer les 
 - Bouton intégré dans l’interface ChatGPT.
 - Paramètres de langue, thème, position du bouton et actions visibles.
 
+## Téléchargements
+
+La dernière release candidate est disponible depuis la page GitHub Releases :
+
+[Télécharger la dernière release](https://github.com/John2022/chatgpt-conversation-export/releases)
+
+Release candidate actuelle : `v1.0.0-rc3`
+
 ## Pourquoi cette extension existe
 
 ChatGPT Conversation Export a été créé pour les utilisateurs qui travaillent avec des conversations longues, complexes, et qui ont besoin d’un moyen fiable de les conserver ou de les reprendre.
