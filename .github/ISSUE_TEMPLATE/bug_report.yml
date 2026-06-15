@@ -1,0 +1,105 @@
+name: Bug report
+description: Report a problem with ChatGPT Conversation Export.
+title: "[Bug] "
+labels: ["bug"]
+body:
+
+* type: markdown
+  attributes:
+  value: |
+  Thank you for reporting a problem.
+
+  ```
+  Please include enough detail to reproduce the issue. Do not include private conversation content unless it is strictly necessary and has been anonymized.
+  ```
+
+* type: input
+  id: extension-version
+  attributes:
+  label: Extension version
+  description: Example: 1.0.0-rc2
+  placeholder: 1.0.0-rc2
+  validations:
+  required: true
+
+* type: input
+  id: firefox-version
+  attributes:
+  label: Firefox version
+  description: Example: Firefox 150.0
+  placeholder: Firefox version
+  validations:
+  required: true
+
+* type: dropdown
+  id: operating-system
+  attributes:
+  label: Operating system
+  options:
+  - Windows
+  - macOS
+  - Linux
+  - Other
+  validations:
+  required: true
+
+* type: dropdown
+  id: export-mode
+  attributes:
+  label: Export mode
+  options:
+  - Readable HTML
+  - Complete HTML
+  - Readable JSON
+  - Complete JSON
+  - Integrated button
+  - Options page
+  - Other
+  validations:
+  required: true
+
+* type: textarea
+  id: problem
+  attributes:
+  label: Problem
+  description: Describe what happened.
+  placeholder: Explain the issue.
+  validations:
+  required: true
+
+* type: textarea
+  id: steps
+  attributes:
+  label: Steps to reproduce
+  description: List the exact steps needed to reproduce the problem.
+  placeholder: |
+  1. Open ChatGPT conversation...
+  2. Click...
+  3. Export...
+  4. See error...
+  validations:
+  required: true
+
+* type: textarea
+  id: expected
+  attributes:
+  label: Expected result
+  description: What should have happened?
+  validations:
+  required: true
+
+* type: textarea
+  id: actual
+  attributes:
+  label: Actual result
+  description: What happened instead?
+  validations:
+  required: true
+
+* type: textarea
+  id: files
+  attributes:
+  label: Example export or screenshot
+  description: Attach a screenshot or an anonymized export if useful. Do not upload private conversations without removing sensitive information.
+  validations:
+  required: false

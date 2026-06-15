@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+contact_links:
+
+* name: Questions and general discussion
+  url: https://github.com/John2022/chatgpt-conversation-export/discussions
+  about: Use GitHub Discussions for general questions, ideas, or non-bug topics.
+
+* name: Releases and downloads
+  url: https://github.com/John2022/chatgpt-conversation-export/releases
+  about: Download release candidates and packaged extension files from the releases page.
+
+* name: Mozilla Add-ons page
+  url: https://addons.mozilla.org/
+  about: The public Mozilla Add-ons page will be added here after publication.
