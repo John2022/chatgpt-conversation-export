@@ -10,17 +10,17 @@ Main extension files are currently located at the repository root.
 
 Important files:
 
-* `manifest.json` — Firefox WebExtension manifest;
-* `background.js` — background logic;
-* `content_button.js` — integrated ChatGPT page button;
-* `inject_backend_export.js` — page-context injection entry point;
-* `page_backend_export.js` — main export logic;
-* `popup.html` / `popup.js` — toolbar popup;
-* `options.html` / `options.js` — options page;
-* `i18n_local.js` — local interface translation helper;
-* `_locales/` — Firefox localization files;
-* `AMO/` — Mozilla Add-ons submission texts;
-* `docs/` — project documentation.
+- `manifest.json` — Firefox WebExtension manifest;
+- `background.js` — background logic;
+- `content_button.js` — integrated ChatGPT page button;
+- `inject_backend_export.js` — page-context injection entry point;
+- `page_backend_export.js` — main export logic;
+- `popup.html` / `popup.js` — toolbar popup;
+- `options.html` / `options.js` — options page;
+- `i18n_local.js` — local interface translation helper;
+- `_locales/` — Firefox localization files;
+- `AMO/` — Mozilla Add-ons submission texts;
+- `docs/` — project documentation.
 
 ## Build model
 
@@ -52,11 +52,11 @@ The package must not contain an extra parent folder above `manifest.json`.
 
 Current public release candidate:
 
-* `v1.0.0-rc2`
+- `v1.0.0-rc2`
 
 Manifest version:
 
-* `1.0.0`
+- `1.0.0`
 
 ## Source review
 

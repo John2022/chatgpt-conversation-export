@@ -16,14 +16,14 @@ The extension does not upload exported conversations to a third-party server.
 
 Depending on the selected export mode, exported files may contain:
 
-* user messages;
-* assistant messages;
-* timestamps when available;
-* message metadata when available;
-* source references when available;
-* file citations when available;
-* image metadata or previews when available;
-* technical export information.
+- user messages;
+- assistant messages;
+- timestamps when available;
+- message metadata when available;
+- source references when available;
+- file citations when available;
+- image metadata or previews when available;
+- technical export information.
 
 ## Sensitive content
 
@@ -31,10 +31,10 @@ ChatGPT conversations may contain personal, confidential or sensitive informatio
 
 Users should review exported files before:
 
-* sharing them publicly;
-* attaching them to GitHub issues;
-* sending them by email;
-* uploading them to another service.
+- sharing them publicly;
+- attaching them to GitHub issues;
+- sending them by email;
+- uploading them to another service.
 
 When reporting bugs, users should anonymize private data whenever possible.
 
@@ -50,10 +50,10 @@ The extension does not provide its own remote synchronization or cloud storage s
 
 Requested permissions are limited to the extension functionality:
 
-* access to ChatGPT pages;
-* local file downloads;
-* extension storage for settings;
-* active tab access when needed.
+- access to ChatGPT pages;
+- local file downloads;
+- extension storage for settings;
+- active tab access when needed.
 
 ## No analytics
 

@@ -15,10 +15,10 @@ The extension can be used in two ways:
 
 The extension provides the following export formats:
 
-* readable HTML;
-* complete HTML archive;
-* readable JSON;
-* complete JSON archive.
+- readable HTML;
+- complete HTML archive;
+- readable JSON;
+- complete JSON archive.
 
 ## Readable HTML export
 
@@ -26,13 +26,13 @@ Readable HTML is intended for normal reading and long-term consultation.
 
 It keeps the conversation structure and renders common formatting such as:
 
-* headings;
-* lists;
-* tables;
-* inline code;
-* code blocks;
-* citations and source references where available;
-* image galleries where available.
+- headings;
+- lists;
+- tables;
+- inline code;
+- code blocks;
+- citations and source references where available;
+- image galleries where available.
 
 ## Complete HTML archive
 
@@ -56,13 +56,13 @@ It is mainly intended for diagnostics, advanced backup and technical review.
 
 The options page allows configuration of:
 
-* interface language;
-* export mode;
-* default export format;
-* integrated ChatGPT button;
-* integrated button position;
-* menu mode;
-* visible actions.
+- interface language;
+- export mode;
+- default export format;
+- integrated ChatGPT button;
+- integrated button position;
+- menu mode;
+- visible actions.
 
 ## Privacy
 

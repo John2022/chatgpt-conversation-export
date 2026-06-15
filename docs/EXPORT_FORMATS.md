@@ -4,12 +4,12 @@ ChatGPT Conversation Export provides several export formats for different use ca
 
 ## Summary
 
-| Format                | Purpose                                              | Recommended use                                |
-| --------------------- | ---------------------------------------------------- | ---------------------------------------------- |
-| Readable HTML         | Human-readable conversation export                   | Reading, archiving, printing                   |
-| Complete HTML archive | Human-readable export with additional technical data | Review, diagnostics, preservation              |
-| Readable JSON         | Structured conversation export                       | Backup, inspection, interoperability           |
-| Complete JSON archive | Most complete structured export                      | Diagnostics, technical review, advanced backup |
+| Format | Purpose | Recommended use |
+|---|---|---|
+| Readable HTML | Human-readable conversation export | Reading, archiving, printing |
+| Complete HTML archive | Human-readable export with additional technical data | Review, diagnostics, preservation |
+| Readable JSON | Structured conversation export | Backup, inspection, interoperability |
+| Complete JSON archive | Most complete structured export | Diagnostics, technical review, advanced backup |
 
 ## Readable HTML
 
@@ -17,16 +17,16 @@ Readable HTML is designed to be opened directly in a browser.
 
 It focuses on readability and attempts to preserve the visible structure of the conversation:
 
-* user and assistant messages;
-* headings;
-* paragraphs;
-* lists;
-* tables;
-* inline code;
-* code blocks;
-* citations and source references when available;
-* file citations when available;
-* image galleries when available.
+- user and assistant messages;
+- headings;
+- paragraphs;
+- lists;
+- tables;
+- inline code;
+- code blocks;
+- citations and source references when available;
+- file citations when available;
+- image galleries when available.
 
 This format is the best choice for normal reading.
 
@@ -52,11 +52,11 @@ Complete JSON archive is the most complete structured export mode.
 
 It is mainly intended for:
 
-* diagnostics;
-* technical review;
-* comparison between exports;
-* preservation of metadata;
-* advanced backup workflows.
+- diagnostics;
+- technical review;
+- comparison between exports;
+- preservation of metadata;
+- advanced backup workflows.
 
 ## Notes about media and references
 
