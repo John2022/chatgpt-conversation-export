@@ -1,0 +1,11 @@
+The extension requests the following permissions:
+
+`storage`
+
+This permission is used only to save local extension settings, such as default export mode, default format, language, theme, integrated button position and visible actions.
+
+`https://chatgpt.com/*`
+
+This permission is required to access the open ChatGPT page, identify the active conversation, inject the integrated button and retrieve the conversation from ChatGPT APIs in the context of the user’s tab.
+
+The extension does not use a third-party server and does not send conversations or tokens to an external service.

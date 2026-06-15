@@ -1,0 +1,11 @@
+L’extension demande les permissions suivantes :
+
+`storage`
+
+Cette permission sert uniquement à enregistrer les paramètres locaux de l’extension, par exemple le mode d’export par défaut, le format par défaut, la langue, le thème, la position du bouton intégré et les actions visibles.
+
+`https://chatgpt.com/*`
+
+Cette permission est nécessaire pour accéder à la page ChatGPT ouverte, identifier la conversation active, injecter le bouton intégré et récupérer la conversation depuis les API de ChatGPT dans le contexte de l’onglet de l’utilisateur.
+
+L’extension n’utilise pas de serveur tiers et n’envoie pas les conversations ou tokens vers un service externe.

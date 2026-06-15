@@ -1,0 +1,14 @@
+First public release of ChatGPT Conversation Export.
+
+Main features:
+
+- export the open ChatGPT conversation;
+- JSON and HTML formats;
+- readable conversation mode;
+- complete archive mode;
+- integrated button inside the ChatGPT interface;
+- settings page;
+- HTML rendering for headings, lists, tables, code blocks, quotes, sources and image galleries;
+- local operation without a third-party server.
+
+Direct PDF export is not included yet. Exported HTML files can be printed to PDF from Firefox.

@@ -1,0 +1,50 @@
+{
+  "manifest_version": 2,
+  "name": "__MSG_extensionName__",
+  "version": "1.0.0",
+  "description": "__MSG_extensionDescription__",
+  "default_locale": "en",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "chatgpt-conversation-export@john2022.local"
+    }
+  },
+  "permissions": [
+    "storage",
+    "https://chatgpt.com/*"
+  ],
+  "browser_action": {
+    "default_title": "__MSG_extensionName__",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "48": "icon.svg"
+    }
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "icons": {
+    "48": "icon.svg"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chatgpt.com/*"
+      ],
+      "js": [
+        "i18n_local.js",
+        "content_button.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    "page_backend_export.js"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  }
+}

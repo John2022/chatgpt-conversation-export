@@ -1,0 +1,163 @@
+{
+  "extensionName": {
+    "message": "ChatGPT Conversation Export"
+  },
+  "extensionDescription": {
+    "message": "Export the current ChatGPT conversation as JSON or HTML locally, in readable or complete archive mode."
+  },
+  "exportReadableJsonButton": {
+    "message": "Readable conversation — JSON"
+  },
+  "exportReadableHtmlButton": {
+    "message": "Readable conversation — HTML"
+  },
+  "exportCompleteJsonButton": {
+    "message": "Complete archive — JSON"
+  },
+  "exportCompleteHtmlButton": {
+    "message": "Complete archive — HTML"
+  },
+  "diagnosticButton": {
+    "message": "API diagnostic"
+  },
+  "settingsButton": {
+    "message": "Settings"
+  },
+  "statusReady": {
+    "message": "v1.0.0-rc2 — backend API + session token."
+  },
+  "hint": {
+    "message": "Readable: for reading or continuing a conversation. Complete archive: includes internal messages and metadata."
+  },
+  "injecting": {
+    "message": "Injecting script..."
+  },
+  "notChatGPTTab": {
+    "message": "Error: the active tab is not a ChatGPT page."
+  },
+  "scriptInjected": {
+    "message": "Script injected. Check the ChatGPT page and the Downloads folder."
+  },
+  "injectionError": {
+    "message": "Injection error: $ERROR$",
+    "placeholders": {
+      "error": {
+        "content": "$1"
+      }
+    }
+  },
+  "popupTitle": {
+    "message": "ChatGPT Conversation Export"
+  },
+  "buttonTitle": {
+    "message": "Export"
+  },
+  "settingsTitle": {
+    "message": "ChatGPT Conversation Export Settings"
+  },
+  "settingsSaved": {
+    "message": "Settings saved."
+  },
+  "defaultFormat": {
+    "message": "Default format"
+  },
+  "language": {
+    "message": "Language"
+  },
+  "htmlTheme": {
+    "message": "HTML export theme"
+  },
+  "inPageButton": {
+    "message": "Button integrated into ChatGPT"
+  },
+  "readableConversation": {
+    "message": "Readable conversation"
+  },
+  "completeArchive": {
+    "message": "Complete archive"
+  },
+  "jsonFormat": {
+    "message": "JSON"
+  },
+  "htmlFormat": {
+    "message": "HTML"
+  },
+  "auto": {
+    "message": "Automatic"
+  },
+  "english": {
+    "message": "English"
+  },
+  "french": {
+    "message": "French"
+  },
+  "light": {
+    "message": "Light"
+  },
+  "dark": {
+    "message": "Dark"
+  },
+  "topRight": {
+    "message": "Top right"
+  },
+  "bottomRight": {
+    "message": "Bottom right"
+  },
+  "disabled": {
+    "message": "None"
+  },
+  "saveSettings": {
+    "message": "Save settings"
+  },
+  "privacyTitle": {
+    "message": "Permissions and privacy"
+  },
+  "privacyText": {
+    "message": "The extension runs only on chatgpt.com. It reads the currently open ChatGPT conversation through ChatGPT’s authenticated backend API and exports it locally. It does not send conversations, files, metadata, or tokens to any third-party server. The session token is used only in memory during export and is never written to exported files."
+  },
+  "openSettings": {
+    "message": "Open settings"
+  },
+  "attachmentsSummary": {
+    "message": "Attachments"
+  },
+  "inPageTheme": {
+    "message": "Integrated button theme"
+  },
+  "sameAsChatGPT": {
+    "message": "Automatic, same as ChatGPT"
+  },
+  "messageDate": {
+    "message": "Message"
+  },
+  "updatedDate": {
+    "message": "Updated"
+  },
+  "codeBlock": {
+    "message": "Code"
+  },
+  "copyButton": {
+    "message": "Copy"
+  },
+  "copiedButton": {
+    "message": "Copied"
+  },
+  "standardModeHelp": {
+    "message": "“Minimal” shows only the default export action. “Standard” shows readable exports only. “Advanced” shows all export modes. “Custom” uses the checkboxes below."
+  },
+  "readableShort": {
+    "message": "Readable"
+  },
+  "completeShort": {
+    "message": "Archive"
+  },
+  "defaultFormatHelp": {
+    "message": "Used by “Minimal” mode to choose the single visible readable export."
+  },
+  "settingsAutoSaveNote": {
+    "message": "Changes are saved automatically."
+  },
+  "interfaceMode": {
+    "message": "Integrated button mode"
+  }
+}

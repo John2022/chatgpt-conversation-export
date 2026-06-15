@@ -1,0 +1,163 @@
+{
+  "extensionName": {
+    "message": "ChatGPT Conversation Export"
+  },
+  "extensionDescription": {
+    "message": "Exporte localement la conversation ChatGPT ouverte en JSON ou HTML, en mode lisible ou archive complète."
+  },
+  "exportReadableJsonButton": {
+    "message": "Conversation lisible — JSON"
+  },
+  "exportReadableHtmlButton": {
+    "message": "Conversation lisible — HTML"
+  },
+  "exportCompleteJsonButton": {
+    "message": "Archive complète — JSON"
+  },
+  "exportCompleteHtmlButton": {
+    "message": "Archive complète — HTML"
+  },
+  "diagnosticButton": {
+    "message": "Diagnostic API"
+  },
+  "settingsButton": {
+    "message": "Paramètres"
+  },
+  "statusReady": {
+    "message": "v1.0.0-rc2 — API backend + token de session."
+  },
+  "hint": {
+    "message": "Conversation lisible : pour relire ou reprendre une conversation. Archive complète : inclut messages internes et métadonnées."
+  },
+  "injecting": {
+    "message": "Injection en cours..."
+  },
+  "notChatGPTTab": {
+    "message": "Erreur : l’onglet actif n’est pas une page ChatGPT."
+  },
+  "scriptInjected": {
+    "message": "Script injecté. Vérifier la page ChatGPT et le dossier Téléchargements."
+  },
+  "injectionError": {
+    "message": "Erreur injection : $ERROR$",
+    "placeholders": {
+      "error": {
+        "content": "$1"
+      }
+    }
+  },
+  "popupTitle": {
+    "message": "ChatGPT Conversation Export"
+  },
+  "buttonTitle": {
+    "message": "Export"
+  },
+  "settingsTitle": {
+    "message": "Paramètres de ChatGPT Conversation Export"
+  },
+  "settingsSaved": {
+    "message": "Paramètres enregistrés."
+  },
+  "defaultFormat": {
+    "message": "Format par défaut"
+  },
+  "language": {
+    "message": "Langue"
+  },
+  "htmlTheme": {
+    "message": "Thème de l’export HTML"
+  },
+  "inPageButton": {
+    "message": "Bouton intégré à ChatGPT"
+  },
+  "readableConversation": {
+    "message": "Conversation lisible"
+  },
+  "completeArchive": {
+    "message": "Archive complète"
+  },
+  "jsonFormat": {
+    "message": "JSON"
+  },
+  "htmlFormat": {
+    "message": "HTML"
+  },
+  "auto": {
+    "message": "Automatique"
+  },
+  "english": {
+    "message": "Anglais"
+  },
+  "french": {
+    "message": "Français"
+  },
+  "light": {
+    "message": "Clair"
+  },
+  "dark": {
+    "message": "Sombre"
+  },
+  "topRight": {
+    "message": "Haut à droite"
+  },
+  "bottomRight": {
+    "message": "Bas à droite"
+  },
+  "disabled": {
+    "message": "Aucun"
+  },
+  "saveSettings": {
+    "message": "Enregistrer les paramètres"
+  },
+  "privacyTitle": {
+    "message": "Autorisations et confidentialité"
+  },
+  "privacyText": {
+    "message": "L’extension s’exécute uniquement sur chatgpt.com. Elle lit la conversation ChatGPT actuellement ouverte via l’API backend authentifiée de ChatGPT, puis l’exporte localement. Elle n’envoie pas les conversations, fichiers, métadonnées ou tokens vers un serveur tiers. Le token de session est utilisé uniquement en mémoire pendant l’export et n’est jamais écrit dans les fichiers exportés."
+  },
+  "openSettings": {
+    "message": "Ouvrir les paramètres"
+  },
+  "attachmentsSummary": {
+    "message": "Fichiers joints"
+  },
+  "inPageTheme": {
+    "message": "Thème du bouton intégré"
+  },
+  "sameAsChatGPT": {
+    "message": "Automatique, comme ChatGPT"
+  },
+  "messageDate": {
+    "message": "Message"
+  },
+  "updatedDate": {
+    "message": "Mis à jour"
+  },
+  "codeBlock": {
+    "message": "Code"
+  },
+  "copyButton": {
+    "message": "Copier"
+  },
+  "copiedButton": {
+    "message": "Copié"
+  },
+  "standardModeHelp": {
+    "message": "« Minimal » affiche uniquement l’action d’export par défaut. « Standard » affiche seulement les exports lisibles. « Avancé » affiche tous les modes d’export. « Personnalisé » utilise les cases ci-dessous."
+  },
+  "readableShort": {
+    "message": "Lisible"
+  },
+  "completeShort": {
+    "message": "Archive"
+  },
+  "defaultFormatHelp": {
+    "message": "Utilisé par le mode « Minimal » pour choisir l’unique export lisible visible."
+  },
+  "settingsAutoSaveNote": {
+    "message": "Les modifications sont enregistrées automatiquement."
+  },
+  "interfaceMode": {
+    "message": "Mode du bouton intégré"
+  }
+}

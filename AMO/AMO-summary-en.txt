@@ -1,0 +1,1 @@
+Export the open ChatGPT conversation as HTML or JSON, in readable or complete archive mode, locally and without a third-party server.

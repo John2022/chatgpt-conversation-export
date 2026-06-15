@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title data-i18n="settingsTitle">ChatGPT Conversation Export Settings</title>
+  <style>
+    * { box-sizing: border-box; }
+    :root[data-theme="light"] { color-scheme: light; --bg:#f7f7f8; --panel:#fff; --text:#111; --muted:#555; --border:#ddd; --field-bg:#f1f1f3; --field-border:#c9c9cf; --button-bg:#149eca; --button-bg-hover:#1188af; --button-text:#fff; --status:#096; --code-bg:#eee; }
+    :root[data-theme="dark"] { color-scheme: dark; --bg:#101014; --panel:#18181d; --text:#f4f4f5; --muted:#c7c7cc; --border:#33343d; --field-bg:#20212a; --field-border:#3a3b44; --button-bg:#2f7f9f; --button-bg-hover:#358eae; --button-text:#fff; --status:#45c486; --code-bg:#25262d; }
+    body { max-width: 940px; margin: 28px auto; padding: 0 20px; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.45; background: var(--bg); color: var(--text); }
+    h1 { margin: 0 0 20px; font-size: 26px; }
+    h2 { margin: 0 0 14px; font-size: 18px; }
+    section { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin: 14px 0; }
+    .settings-list { display: grid; gap: 16px; max-width: 840px; }
+    .setting { display: grid; grid-template-columns: minmax(210px, 300px) minmax(260px, 1fr); gap: 8px 18px; align-items: center; }
+    .setting label { font-weight: 700; }
+    .setting .note { grid-column: 2; margin: -2px 0 0; }
+    select { width: 100%; max-width: 500px; padding: 8px; border: 1px solid var(--field-border); border-radius: 8px; background: var(--field-bg); color: var(--text); }
+    .checks { display: grid; grid-template-columns: repeat(2, minmax(220px, 1fr)); gap: 8px 16px; margin-top: 10px; }
+    .visible-actions-inline { grid-column: 1 / -1; margin: -2px 0 4px; padding: 16px 18px; border: 1px solid var(--border); border-radius: 10px; background: color-mix(in srgb, var(--panel) 92%, var(--field-bg) 8%); transition: opacity .15s ease; }
+    .visible-actions-inline h2 { margin-bottom: 10px; }
+    #visibleActionsSection.is-hidden { display: none; }
+    #defaultFormatSetting.is-hidden { display: none; }
+    .check { display: flex; gap: 8px; align-items: center; font-weight: 600; color: var(--text); }
+    .check input { width: 16px; height: 16px; }
+    .note { color: var(--muted); font-size: 13px; max-width: 820px; }
+    .autosave-row { display: flex; align-items: center; gap: 14px; margin-top: 18px; min-height: 1.45em; }
+    .autosave-note { margin: 0; }
+    #status { color: var(--status); font-weight: 700; white-space: nowrap; min-height: 1.45em; }
+    p { max-width: 820px; color: var(--text); }
+    code { background: var(--code-bg); padding: 2px 4px; border-radius: 4px; }
+    @media (max-width: 760px) { .setting { grid-template-columns: 1fr; gap: 6px 0; } .setting .note { grid-column: 1; margin: -2px 0 0; } .autosave-row { flex-wrap: wrap; } .checks { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <h1 data-i18n="settingsTitle">ChatGPT Conversation Export Settings</h1>
+
+  <section>
+    <h2 data-i18n="settingsTitle">Settings</h2>
+    <div class="settings-list">
+      <div class="setting">
+        <label for="language" data-i18n="language">Language</label>
+        <select id="language"><option value="auto" data-i18n="auto">Automatic</option><option value="en" data-i18n="english">English</option><option value="fr" data-i18n="french">French</option></select>
+      </div>
+
+      <div class="setting">
+        <label for="htmlTheme" data-i18n="htmlTheme">HTML export theme</label>
+        <select id="htmlTheme"><option value="auto" data-i18n="auto">Automatic</option><option value="light" data-i18n="light">Light</option><option value="dark" data-i18n="dark">Dark</option></select>
+      </div>
+
+      <div class="setting">
+        <label for="htmlLayout" data-i18n="htmlLayout">HTML message layout</label>
+        <select id="htmlLayout"><option value="conversation" data-i18n="htmlLayoutConversation">Conversation, ChatGPT left / user right</option><option value="full_width" data-i18n="htmlLayoutFull">Full width</option></select>
+      </div>
+
+      <div class="setting">
+        <label for="htmlAttachmentLinks" data-i18n="htmlAttachmentLinks">Attachment download links in HTML</label>
+        <select id="htmlAttachmentLinks"><option value="available" data-i18n="htmlAttachmentLinksAvailable">Show when a direct link is available</option><option value="disabled" data-i18n="htmlAttachmentLinksDisabled">Disabled</option></select>
+        <p class="note" data-i18n="attachmentsNote">Some attachment links may require an active ChatGPT session.</p>
+      </div>
+
+      <div class="setting">
+        <label for="inPageButton" data-i18n="inPageButton">Button integrated into ChatGPT</label>
+        <select id="inPageButton"><option value="top_right" data-i18n="topRight">Top right</option><option value="bottom_right" data-i18n="bottomRight">Bottom right</option><option value="disabled" data-i18n="disabled">None</option></select>
+      </div>
+
+      <div class="setting">
+        <label for="inPageTheme" data-i18n="inPageTheme">Integrated button theme</label>
+        <select id="inPageTheme"><option value="auto" data-i18n="sameAsChatGPT">Automatic, same as ChatGPT</option><option value="light" data-i18n="light">Light</option><option value="dark" data-i18n="dark">Dark</option></select>
+      </div>
+
+      <div class="setting">
+        <label for="interfaceMode" data-i18n="interfaceMode">Integrated button mode</label>
+        <select id="interfaceMode"><option value="minimal" data-i18n="interfaceModeMinimal">Minimal</option><option value="standard" data-i18n="interfaceModeStandard">Standard</option><option value="advanced" data-i18n="interfaceModeAdvanced">Advanced</option><option value="custom" data-i18n="interfaceModeCustom">Custom</option></select>
+        <p class="note" data-i18n="standardModeHelp">Standard shows readable exports only. Advanced shows all export modes. Custom uses the checkboxes below.</p>
+      </div>
+
+      <div id="visibleActionsSection" class="visible-actions-inline">
+        <h2 data-i18n="visibleActions">Visible actions</h2>
+        <div class="checks">
+          <label class="check"><input type="checkbox" id="showReadableJson"><span data-i18n="showReadableJson">Readable conversation — JSON</span></label>
+          <label class="check"><input type="checkbox" id="showReadableHtml"><span data-i18n="showReadableHtml">Readable conversation — HTML</span></label>
+          <label class="check"><input type="checkbox" id="showCompleteJson"><span data-i18n="showCompleteJson">Complete archive — JSON</span></label>
+          <label class="check"><input type="checkbox" id="showCompleteHtml"><span data-i18n="showCompleteHtml">Complete archive — HTML</span></label>
+          <label class="check"><input type="checkbox" id="showDiagnostic"><span data-i18n="showDiagnostic">API diagnostic</span></label>
+        </div>
+      </div>
+
+      <div class="setting" id="defaultFormatSetting">
+        <label for="defaultFormat" data-i18n="defaultFormat">Default format</label>
+        <select id="defaultFormat"><option value="json" data-i18n="jsonFormat">JSON</option><option value="html" data-i18n="htmlFormat">HTML</option></select>
+        <p class="note" data-i18n="defaultFormatHelp">Used by “Minimal” mode to choose the single visible readable export.</p>
+      </div>
+
+
+
+
+    </div>
+
+    <div class="autosave-row"><p class="note autosave-note" data-i18n="settingsAutoSaveNote">Changes are saved automatically.</p><span id="status" aria-live="polite"></span></div>
+  </section>
+
+  <section>
+    <h2 data-i18n="privacyTitle">Permissions and privacy</h2>
+    <p data-i18n="privacyText">The extension runs only on chatgpt.com. It reads the currently open ChatGPT conversation through ChatGPT’s authenticated backend API and exports it locally. It does not send conversations, files, metadata, or tokens to any third-party server. The session token is used only in memory during export and is never written to exported files.</p>
+  </section>
+  <script src="i18n_local.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>
