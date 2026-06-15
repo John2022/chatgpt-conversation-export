@@ -14,7 +14,7 @@ body:
     id: extension-version
     attributes:
       label: Extension version
-      description: Example: 1.0.0-rc2
+      description: "Example: 1.0.0-rc2"
       placeholder: 1.0.0-rc2
     validations:
       required: true
@@ -23,7 +23,7 @@ body:
     id: firefox-version
     attributes:
       label: Firefox version
-      description: Example: Firefox 150.0
+      description: "Example: Firefox 150.0"
       placeholder: Firefox version
     validations:
       required: true
