@@ -1,9 +1,11 @@
 ChatGPT Conversation Export permet d’exporter localement la conversation ChatGPT actuellement ouverte dans Firefox.
 
+L’extension est conçue pour les utilisateurs qui travaillent avec des conversations ChatGPT longues ou complexes et qui ont besoin d’un moyen fiable de conserver, relire ou reprendre leur travail. Les très longues conversations peuvent devenir lentes, difficiles à parcourir, ou plus difficiles à continuer correctement. L’export permet de conserver une sauvegarde locale, d’extraire le contexte utile et de redémarrer depuis une conversation plus propre lorsque c’est nécessaire.
+
 L’extension propose deux modes principaux :
 
-- Conversation lisible : pour obtenir une version claire de l’échange, adaptée à la relecture, au classement ou à l’impression.
-- Archive complète : pour conserver davantage de métadonnées, utile pour la vérification, le diagnostic ou l’archivage détaillé.
+- Conversation lisible : une version claire de l’échange, adaptée à la relecture, au classement, à l’impression ou à la préparation d’un prompt de reprise.
+- Archive complète : un export plus détaillé avec davantage de métadonnées, utile pour la vérification, le diagnostic ou la conservation à long terme.
 
 Formats disponibles :
 
@@ -12,17 +14,16 @@ Formats disponibles :
 - JSON complet ;
 - HTML complet.
 
-L’export HTML rend les conversations de manière plus proche de l’affichage ChatGPT : titres, listes, tableaux, blocs de code, citations, sources web et galeries d’images lorsque les données nécessaires sont disponibles.
+L’export HTML affiche les éléments courants d’une conversation : titres, listes, tableaux, blocs de code, code inline, citations, références de sources, pièces jointes et galeries d’images lorsque les métadonnées sont disponibles.
 
-L’extension ajoute aussi un bouton intégré dans l’interface ChatGPT, avec des paramètres pour choisir la langue, le thème, le format par défaut, le mode d’affichage du menu et la position du bouton.
+L’extension peut être utilisée depuis la popup de Firefox ou depuis un bouton d’export intégré dans la page ChatGPT.
 
-Confidentialité :
+Modèle de confidentialité :
 
-- aucun serveur tiers ;
-- aucun envoi de conversations vers un service externe ;
-- génération locale des fichiers exportés ;
-- token de session utilisé uniquement en mémoire pendant l’export ;
-- paramètres stockés localement dans Firefox.
+- les exports sont générés localement dans le navigateur ;
+- l’extension n’exploite aucun serveur tiers ;
+- les conversations, paramètres et tokens de session ne sont pas envoyés vers un service externe ;
+- la session ChatGPT déjà active dans l’onglet est utilisée uniquement pour récupérer la conversation courante pendant l’export.
 
 Limites :
 

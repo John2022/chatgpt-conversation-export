@@ -1,4 +1,4 @@
-First public release of ChatGPT Conversation Export.
+Release candidate `v1.0.0-rc3` of ChatGPT Conversation Export.
 
 Main features:
 
@@ -7,8 +7,15 @@ Main features:
 - readable conversation mode;
 - complete archive mode;
 - integrated button inside the ChatGPT interface;
+- Firefox toolbar popup;
 - settings page;
-- HTML rendering for headings, lists, tables, code blocks, quotes, sources and image galleries;
+- HTML rendering for headings, lists, tables, code blocks, inline code, quotes, web sources and image galleries;
 - local operation without a third-party server.
+
+Changes in this release candidate:
+
+- fixed rendering of ChatGPT image carousel references in readable HTML exports;
+- added support for `image_v2` / inline image tokens when image metadata is available;
+- added public screenshots and updated project documentation.
 
 Direct PDF export is not included yet. Exported HTML files can be printed to PDF from Firefox.

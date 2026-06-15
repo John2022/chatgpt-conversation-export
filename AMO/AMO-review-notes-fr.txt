@@ -2,19 +2,23 @@ Notes pour la revue Mozilla Add-ons.
 
 ChatGPT Conversation Export est une extension Firefox non officielle qui exporte localement la conversation ChatGPT ouverte par l’utilisateur.
 
+Version soumise : `v1.0.0-rc3`.
+
 Fonctionnement technique :
 
 - le script de contenu s’exécute uniquement sur `https://chatgpt.com/*` ;
 - l’extension ajoute un bouton d’export dans l’interface ChatGPT ;
 - l’export peut également être lancé depuis la popup Firefox ;
 - le script utilise la session ChatGPT déjà active dans l’onglet ;
-- il récupère la conversation via les API de ChatGPT accessibles depuis la page ;
-- les fichiers exportés sont générés localement par le navigateur.
+- il récupère la conversation courante via les API de ChatGPT accessibles depuis le contexte de la page ;
+- les fichiers exportés sont générés localement par le navigateur ;
+- les exports HTML peuvent afficher les sources web, pièces jointes et galeries d’images lorsque ces références sont déjà présentes dans les données de ChatGPT.
 
 Confidentialité :
 
 - aucun serveur tiers ;
 - aucun suivi analytique ;
+- aucun code publicitaire ;
 - aucun code distant ;
 - aucune dépendance externe ;
 - aucun code minifié ou obfusqué ;
@@ -26,7 +30,12 @@ Permissions :
 - `storage` : paramètres locaux de l’extension ;
 - `https://chatgpt.com/*` : accès à la conversation ChatGPT ouverte et aux API nécessaires à l’export.
 
-Les exports HTML peuvent contenir des liens ou images distantes déjà présents dans les données de ChatGPT. Ces liens sont inclus dans le fichier exporté pour préserver le contenu de la conversation.
+L’extension ne contient aucune fonctionnalité payante, aucun système de compte, aucune télémétrie et aucune synchronisation externe.
 
+Les exports HTML peuvent contenir des liens ou images distantes déjà présents dans les données de ChatGPT. Ces liens sont inclus dans le fichier exporté pour préserver le contenu de la conversation. Si l’utilisateur ouvre ensuite un fichier HTML exporté, le navigateur peut charger ces ressources distantes depuis leurs domaines d’origine.
+
+Le code source et la documentation du projet sont disponibles dans le dépôt GitHub public :
+
+https://github.com/John2022/chatgpt-conversation-export
 
 Licence : Mozilla Public License 2.0.

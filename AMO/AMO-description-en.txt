@@ -1,9 +1,11 @@
 ChatGPT Conversation Export lets you locally export the currently open ChatGPT conversation in Firefox.
 
-The extension provides two main modes:
+It is designed for users who work with long or complex ChatGPT conversations and need a reliable way to preserve, review or continue their work. Very long conversations can become slow, difficult to navigate, or harder to continue accurately. Exporting them makes it easier to keep a local backup, extract useful context and restart from a cleaner conversation when needed.
 
-- Readable conversation: a clear version of the exchange, suitable for reading, filing or printing.
-- Complete archive: a more detailed export with additional metadata, useful for verification, diagnostics or long-term archiving.
+The extension provides two main export modes:
+
+- Readable conversation: a clear version of the exchange, suitable for reading, filing, printing or preparing a continuation prompt.
+- Complete archive: a more detailed export with additional metadata, useful for verification, diagnostics or long-term preservation.
 
 Available formats:
 
@@ -12,22 +14,21 @@ Available formats:
 - complete JSON;
 - complete HTML.
 
-The HTML export renders conversations in a form closer to the ChatGPT interface: headings, lists, tables, code blocks, quotes, web sources and image galleries when the required data is available.
+The HTML export renders common conversation elements such as headings, lists, tables, code blocks, inline code, quotes, source references, attachments and image galleries when metadata is available.
 
-The extension also adds an integrated button inside the ChatGPT interface, with settings for language, theme, default format, menu mode and button position.
+The extension can be used from the Firefox toolbar popup or from an integrated export button displayed inside the ChatGPT page.
 
-Privacy:
+Privacy model:
 
-- no third-party server;
-- no conversations sent to an external service;
-- exported files are generated locally;
-- session token used only in memory during export;
-- settings stored locally in Firefox.
+- exports are generated locally in the browser;
+- the extension does not operate a third-party server;
+- conversations, settings and session tokens are not sent to an external service;
+- the ChatGPT session already active in the browser tab is used only to retrieve the current conversation during export.
 
 Limitations:
 
 ChatGPT may change its interface or internal APIs. In that case, an extension update may be required.
 
-Some images, sources or attachments depend on the metadata actually returned by ChatGPT. When direct content is not available, the extension keeps useful references instead of generating fake previews.
+Some images, sources or attachments may depend on the metadata returned by ChatGPT. When direct content is not available, the extension keeps useful references instead of generating fake previews.
 
 ChatGPT Conversation Export is an unofficial extension. It is not developed, endorsed or affiliated with OpenAI.

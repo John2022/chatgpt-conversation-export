@@ -4,6 +4,10 @@
 
 - Added rendering support for ChatGPT image carousel tokens (`i`) in readable HTML exports.
 - Preserves image galleries from `image_v2` metadata when available.
+- Added public screenshots to the README files.
+- Added README language links and direct release download links.
+- Updated AMO submission texts for the release candidate.
+
 
 ## 1.0.0-rc2 — Initial public release candidate
 
