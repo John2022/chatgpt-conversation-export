@@ -1,3 +1,5 @@
+[English](README.md) | [Français](README.fr.md)
+
 # ChatGPT Conversation Export
 
 ChatGPT Conversation Export is an unofficial Firefox extension that exports the currently open ChatGPT conversation.
