@@ -11,7 +11,7 @@ const DEFAULT_SETTINGS = {
   showReadableHtml: true,
   showCompleteJson: true,
   showCompleteHtml: true,
-  showDiagnostic: true
+  showDiagnostic: false
 };
 
 function extensionApi() { return typeof browser !== "undefined" ? browser : chrome; }

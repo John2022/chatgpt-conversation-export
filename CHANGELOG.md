@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.0.0-rc5 — Icon refresh
+
+- Replaced the extension icon with a new PNG icon set in multiple sizes.
+- Updated the manifest icon declarations to use the new PNG files.
+- Kept the AMO validation cleanup and privacy-preserving diagnostic behavior from rc4.
+
+## 1.0.0-rc4 — AMO validation cleanup
+
+- Added the Firefox `data_collection_permissions` manifest declaration with `none`.
+- Replaced the remaining dynamic `innerHTML` assignments with DOM construction to avoid AMO validation warnings.
+
 ## 1.0.0-rc3 — Image carousel rendering fix
 
 - Added rendering support for ChatGPT image carousel tokens (`i`) in readable HTML exports.

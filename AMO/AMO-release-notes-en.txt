@@ -1,4 +1,4 @@
-Release candidate `v1.0.0-rc3` of ChatGPT Conversation Export.
+Release candidate `v1.0.0-rc5` of ChatGPT Conversation Export.
 
 Main features:
 
@@ -14,8 +14,11 @@ Main features:
 
 Changes in this release candidate:
 
-- fixed rendering of ChatGPT image carousel references in readable HTML exports;
-- added support for `image_v2` / inline image tokens when image metadata is available;
-- added public screenshots and updated project documentation.
+- refreshed the extension icon set with PNG icons in multiple sizes;
+- keeps the Firefox `data_collection_permissions` manifest declaration with `none`;
+- keeps the DOM-construction cleanup that avoids AMO `innerHTML` validation warnings;
+- keeps the technical diagnostic export limited to API and parser summaries, without writing the full conversation content;
+- keeps the clearer localized diagnostic label and hidden-by-default diagnostic action;
+- keeps the image carousel rendering fix introduced in rc3.
 
 Direct PDF export is not included yet. Exported HTML files can be printed to PDF from Firefox.

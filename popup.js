@@ -11,7 +11,7 @@ const DEFAULT_SETTINGS = {
   showReadableHtml: true,
   showCompleteJson: true,
   showCompleteHtml: true,
-  showDiagnostic: true
+  showDiagnostic: false
 };
 function extensionApi() { return typeof browser !== "undefined" ? browser : chrome; }
 function getStorageValues() { const api = extensionApi(); return new Promise(resolve => { if (!api.storage || !api.storage.local) { resolve({ ...DEFAULT_SETTINGS }); return; } api.storage.local.get(DEFAULT_SETTINGS, values => { const err = api.runtime && api.runtime.lastError; resolve(err ? { ...DEFAULT_SETTINGS } : { ...DEFAULT_SETTINGS, ...(values || {}) }); }); }); }
@@ -38,7 +38,7 @@ function getStorageValues() { const api = extensionApi(); return new Promise(res
       if (settings.showDiagnostic) set.add("diagnostic");
       return set;
     }
-    return new Set(["readable_json", "readable_html", "complete_json", "complete_html", "diagnostic"]);
+    return new Set(["readable_json", "readable_html", "complete_json", "complete_html"]);
   }
   function applyVisibility() {
     const visible = getVisibleActions(currentSettings);

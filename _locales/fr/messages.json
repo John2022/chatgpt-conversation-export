@@ -18,13 +18,13 @@
     "message": "Archive complète — HTML"
   },
   "diagnosticButton": {
-    "message": "Diagnostic API"
+    "message": "Diagnostic technique"
   },
   "settingsButton": {
     "message": "Paramètres"
   },
   "statusReady": {
-    "message": "v1.0.0-rc3 — API backend + token de session."
+    "message": "v1.0.0-rc5 — API backend + token de session."
   },
   "hint": {
     "message": "Conversation lisible : pour relire ou reprendre une conversation. Archive complète : inclut messages internes et métadonnées."
@@ -143,7 +143,7 @@
     "message": "Copié"
   },
   "standardModeHelp": {
-    "message": "« Minimal » affiche uniquement l’action d’export par défaut. « Standard » affiche seulement les exports lisibles. « Avancé » affiche tous les modes d’export. « Personnalisé » utilise les cases ci-dessous."
+    "message": "« Minimal » affiche uniquement l’action d’export par défaut. « Standard » affiche seulement les exports lisibles. « Avancé » affiche les principaux modes d’export. « Personnalisé » utilise les cases ci-dessous, y compris le diagnostic technique s’il est activé."
   },
   "readableShort": {
     "message": "Lisible"

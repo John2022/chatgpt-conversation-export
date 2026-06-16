@@ -22,7 +22,7 @@ The latest release candidate is available from the GitHub Releases page:
 
 [Download the latest release](https://github.com/John2022/chatgpt-conversation-export/releases)
 
-Current release candidate: `v1.0.0-rc3`
+Current release candidate: `v1.0.0-rc5`
 
 ## Why this extension exists
 

@@ -2,7 +2,7 @@ Notes pour la revue Mozilla Add-ons.
 
 ChatGPT Conversation Export est une extension Firefox non officielle qui exporte localement la conversation ChatGPT ouverte par l’utilisateur.
 
-Version soumise : `v1.0.0-rc3`.
+Version soumise : `v1.0.0-rc5`.
 
 Fonctionnement technique :
 

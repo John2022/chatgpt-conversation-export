@@ -11,7 +11,7 @@ const DEFAULT_SETTINGS = {
   showReadableHtml: true,
   showCompleteJson: true,
   showCompleteHtml: true,
-  showDiagnostic: true
+  showDiagnostic: false
 };
 
 function extensionApi() {
@@ -34,7 +34,7 @@ function getStorageValues() {
 
 (function () {
   const api = extensionApi();
-  const ROOT_ID = "chatgpt-conversation-export-v100rc3-root";
+  const ROOT_ID = "chatgpt-conversation-export-v100rc5-root";
 
   function msg(key, settings) {
     return typeof CCB_msg === "function" ? CCB_msg(key, settings || {}) : key;
@@ -107,7 +107,7 @@ function getStorageValues() {
       if (settings.showDiagnostic) set.add("diagnostic");
       return set;
     }
-    return new Set(["readable_json", "readable_html", "complete_json", "complete_html", "diagnostic"]);
+    return new Set(["readable_json", "readable_html", "complete_json", "complete_html"]);
   }
 
   function orderedActions(settings) {
@@ -131,11 +131,11 @@ function getStorageValues() {
   }
 
   function injectExport(mode, format, settings) {
-    const token = "chatgpt_conversation_export_v100rc3_inline_" + Date.now() + "_" + Math.random().toString(16).slice(2);
-    const old = document.getElementById("chatgpt-conversation-export-v100rc3-script");
+    const token = "chatgpt_conversation_export_v100rc5_inline_" + Date.now() + "_" + Math.random().toString(16).slice(2);
+    const old = document.getElementById("chatgpt-conversation-export-v100rc5-script");
     if (old) old.remove();
     const script = document.createElement("script");
-    script.id = "chatgpt-conversation-export-v100rc3-script";
+    script.id = "chatgpt-conversation-export-v100rc5-script";
     script.src = api.runtime.getURL("page_backend_export.js");
     script.dataset.mode = mode;
     script.dataset.format = format;
@@ -172,8 +172,8 @@ function getStorageValues() {
     root.setAttribute("data-position", settings.inPageButton || "top_right");
     root.setAttribute("data-theme", resolveTheme(settings));
     root.setAttribute("data-interface", settings.interfaceMode || "advanced");
-    root.innerHTML = `
-<style>
+    const style = document.createElement("style");
+    style.textContent = `
 #${ROOT_ID}{position:fixed;right:18px;z-index:2147483647;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:12px;pointer-events:none;width:max-content;max-width:calc(100vw - 36px)}
 #${ROOT_ID}[data-position="top_right"]{top:76px} #${ROOT_ID}[data-position="bottom_right"]{bottom:22px}
 #${ROOT_ID}[data-theme="dark"]{--ccb-bg:rgba(32,33,35,.94);--ccb-bg-hover:rgba(52,53,65,.98);--ccb-panel:rgba(32,33,35,.98);--ccb-fg:#f2f2f2;--ccb-muted:#b8b8b8;--ccb-border:rgba(255,255,255,.16);--ccb-border-hover:rgba(255,255,255,.26);--ccb-action-bg:rgba(255,255,255,.055);--ccb-action-hover:rgba(255,255,255,.11);--ccb-shadow:rgba(0,0,0,.36);--ccb-menu-width:178px}
@@ -188,8 +188,39 @@ function getStorageValues() {
 #${ROOT_ID} .ccb-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;width:100%;align-items:stretch} #${ROOT_ID} .ccb-row.ccb-row-single{grid-template-columns:1fr} #${ROOT_ID} .ccb-action{appearance:none;width:100%;min-width:0;box-sizing:border-box;border:1px solid var(--ccb-border);border-radius:7px;padding:6px 7px;background:var(--ccb-action-bg);color:var(--ccb-fg);font-size:12px;font-weight:650;text-align:center;cursor:pointer;white-space:nowrap} #${ROOT_ID} .ccb-action:hover{background:var(--ccb-action-hover);border-color:var(--ccb-border-hover)}
 #${ROOT_ID} .ccb-panel>.ccb-action:not(.ccb-settings){display:block;width:100%;min-width:0;margin:6px 0 0}
 #${ROOT_ID} .ccb-settings{display:block;text-align:center;width:100%;min-width:0;margin:6px 0 0;background:var(--ccb-action-bg);color:var(--ccb-fg)} #${ROOT_ID} .ccb-minimal-row{display:flex;flex-direction:column;gap:6px;align-items:stretch;width:100%} #${ROOT_ID} .ccb-minimal-row .ccb-action{width:100%;min-width:0} #${ROOT_ID} .ccb-minimal-row .ccb-settings{margin-top:0} #${ROOT_ID}[data-interface="minimal"] .ccb-action{padding:7px 8px}
-</style>
-<button class="ccb-main" type="button" title="ChatGPT Conversation Export"><svg class="ccb-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h12l2 2v16H5z"></path><path d="M8 3v6h8V3"></path><path d="M8 21v-7h8v7"></path><path d="M10 16h4"></path></svg><span class="ccb-label"></span></button><div class="ccb-panel" aria-label="ChatGPT Conversation Export"></div>`;
+`;
+    root.appendChild(style);
+
+    const mainButton = document.createElement("button");
+    mainButton.className = "ccb-main";
+    mainButton.type = "button";
+    mainButton.title = "ChatGPT Conversation Export";
+
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("class", "ccb-icon");
+    svg.setAttribute("viewBox", "0 0 24 24");
+    svg.setAttribute("aria-hidden", "true");
+    [
+      "M5 3h12l2 2v16H5z",
+      "M8 3v6h8V3",
+      "M8 21v-7h8v7",
+      "M10 16h4"
+    ].forEach(d => {
+      const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      path.setAttribute("d", d);
+      svg.appendChild(path);
+    });
+    mainButton.appendChild(svg);
+
+    const label = document.createElement("span");
+    label.className = "ccb-label";
+    mainButton.appendChild(label);
+    root.appendChild(mainButton);
+
+    const panelElement = document.createElement("div");
+    panelElement.className = "ccb-panel";
+    panelElement.setAttribute("aria-label", "ChatGPT Conversation Export");
+    root.appendChild(panelElement);
 
     root.querySelector(".ccb-label").textContent = buttonLabel(settings);
     const panel = root.querySelector(".ccb-panel");

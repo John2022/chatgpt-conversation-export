@@ -76,7 +76,7 @@
       internalMessagesExcluded: "Messages internes exclus",
       emptyEntriesIgnored: "Entrées sans contenu ignorées",
       method: "Méthode",
-      backendApi: "backend API",
+      backendApi: "API backend",
       exportedAt: "Exporté le",
       messagesLabel: "Messages",
       userSpeaker: "Utilisateur",
@@ -2235,7 +2235,7 @@ ${messages}
   }
 
   function showExportNotice(message, kind = "success") {
-    const id = "chatgpt-conversation-export-v100rc3-notice";
+    const id = "chatgpt-conversation-export-v100rc5-notice";
     const old = document.getElementById(id);
     if (old) old.remove();
     const isDark = detectPageTheme() === "dark";
@@ -2259,8 +2259,23 @@ ${messages}
       `color:${isDark ? "#f4f4f5" : "#111"}`,
       kind === "error" ? "border-left:5px solid #d84a4a" : "border-left:5px solid #149eca"
     ].join(";");
-    root.innerHTML = `<div style="display:flex;align-items:flex-start;gap:10px;padding:12px 12px 12px 14px"><pre style="margin:0;white-space:pre-wrap;font:inherit;flex:1">${escapeHtml(message)}</pre><button type="button" aria-label="OK" style="border:0;background:transparent;color:inherit;font-size:18px;line-height:1;cursor:pointer;padding:0 2px;opacity:.75">×</button></div>`;
-    root.querySelector("button").addEventListener("click", () => root.remove());
+    const noticeBody = document.createElement("div");
+    noticeBody.style.cssText = "display:flex;align-items:flex-start;gap:10px;padding:12px 12px 12px 14px";
+
+    const noticeText = document.createElement("pre");
+    noticeText.style.cssText = "margin:0;white-space:pre-wrap;font:inherit;flex:1";
+    noticeText.textContent = message;
+    noticeBody.appendChild(noticeText);
+
+    const closeButton = document.createElement("button");
+    closeButton.type = "button";
+    closeButton.setAttribute("aria-label", "OK");
+    closeButton.style.cssText = "border:0;background:transparent;color:inherit;font-size:18px;line-height:1;cursor:pointer;padding:0 2px;opacity:.75";
+    closeButton.textContent = "×";
+    closeButton.addEventListener("click", () => root.remove());
+    noticeBody.appendChild(closeButton);
+
+    root.appendChild(noticeBody);
     document.documentElement.appendChild(root);
     if (kind !== "error") setTimeout(() => { if (root.isConnected) root.remove(); }, 14000);
   }
@@ -2279,7 +2294,7 @@ ${messages}
       mode,
       conversation_id_detected: conversationId,
       user_agent: navigator.userAgent,
-      context: "page_context_script_v53"
+      context: "page_context_script_v54"
     };
 
     try {
@@ -2317,12 +2332,52 @@ ${messages}
       }
 
       const raw = fetched.raw;
-      const exportFull = mode === "export_complete" || mode === "export_full" || mode === "diagnostic";
+      const diagnosticMode = mode === "diagnostic";
+      const exportFull = mode === "export_complete" || mode === "export_full";
+      const includeTechnicalData = exportFull || diagnosticMode;
       const built = buildMessages(raw, exportedAt, {
-        includeInternal: exportFull,
-        includeMetadata: exportFull
+        includeInternal: includeTechnicalData,
+        includeMetadata: includeTechnicalData
       });
       hydrateImageGroups(built.messages, raw);
+
+      if (diagnosticMode) {
+        const diag = {
+          ...baseDiagnostic,
+          api_url: apiUrl,
+          diagnostic_type: "api_and_parser_summary",
+          diagnostic_scope: "summary_only_no_messages",
+          session_summary: session.sessionSummary,
+          session_error: session.sessionError,
+          backend_status: fetched.status,
+          backend_attempt_used: fetched.usedAttempt,
+          session_token_present: !!session.token,
+          raw_summary: {
+            title_present: !!raw.title,
+            raw_keys: Object.keys(raw || {}),
+            mapping_nodes: raw.mapping ? Object.keys(raw.mapping).length : null,
+            current_node_present: !!raw.current_node,
+            create_time_present: raw.create_time != null,
+            update_time_present: raw.update_time != null
+          },
+          parser_summary: {
+            active_path_messages_raw: built.rawItems.length,
+            complete_archive_messages_count: built.messages.length,
+            readable_internal_messages_would_be_excluded: built.excluded.length,
+            skipped_empty_messages: built.skippedEmpty.length,
+            ignored_non_user_assistant_messages: built.roleIgnored.length
+          },
+          excluded_internal_summary: summarizeExcluded(built.excluded),
+          steps,
+          note: "This diagnostic intentionally excludes message contents, raw conversation payload, attachments, files and tokens. It only records API access results and parser counts."
+        };
+        downloadJSON(diag, `chatgpt-conversation-export-diagnostic-${exportedAt}.json`);
+        showExportNotice(`${t("diagnosticDownloaded")}
+
+${t("method")} : ${t("backendApi")}`, "success");
+        finish({ diagnostic: true, backend_status: fetched.status, complete_archive_messages_count: built.messages.length });
+        return;
+      }
 
       const output = {
         exported_at: exportedAt,
@@ -2353,7 +2408,7 @@ ${messages}
           assistant: t("chatgptSpeaker")
         },
         export_stats: {
-          version: "1.0.0-rc3",
+          version: "1.0.0-rc5",
           extraction_method: "backend_api_page_context_with_session_token",
           backend_attempt_used: fetched.usedAttempt,
           raw_mapping_nodes: raw.mapping ? Object.keys(raw.mapping).length : null,
@@ -2374,12 +2429,6 @@ ${messages}
         output.excluded_internal_summary = summarizeExcluded(built.excluded);
       }
 
-      if (mode === "diagnostic") {
-        output.raw_keys = Object.keys(raw || {});
-        output.excluded_internal_messages = built.excluded;
-        output.skipped_empty_messages = built.skippedEmpty;
-        output.ignored_non_user_assistant_messages = built.roleIgnored;
-      }
 
       const suffix = exportFull ? "complete" : "readable";
       if (exportFormat === "html") {
